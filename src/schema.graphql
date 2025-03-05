@@ -1,6 +1,9 @@
 type Query {
   "A curated array of listings to feature on the homepage"
   featuredListings: [Listing!]!
+
+  "Returns the details about this listing"
+  listing(id: ID!): Listing
 }
 "A particular intergalactic location available for booking"
 type Listing {
@@ -13,4 +16,13 @@ type Listing {
   costPerNight: Float
   "Indicates whether listing is closed for bookings (on hiatus)"
   closedForBookings: Boolean
+  amenities: [Amenity!]!
+}
+
+type Amenity {
+  id: ID!
+  "the amenity category the amenity belongs to "
+  category: String!
+  "The amenity's name"
+  name: String!
 }
